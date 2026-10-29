@@ -1,3 +1,10 @@
+WIN_LINES = [
+    (0, 1, 2), (3, 4, 5), (6, 7, 8),
+    (0, 3, 6), (1, 4, 7), (2, 5, 8),
+    (0, 4, 8), (2, 4, 6),
+]
+
+
 def show_board(board):
     print(f" {board[0]} | {board[1]} | {board[2]} ")
     print("---+---+---")
@@ -27,6 +34,13 @@ def ask_cell(board):
         return number - 1
 
 
+def check_win(board, player):
+    for a, b, c in WIN_LINES:
+        if board[a] == player and board[b] == player and board[c] == player:
+            return True
+    return False
+
+
 def play():
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     player = "X"
@@ -37,6 +51,11 @@ def play():
 
         cell = ask_cell(board)
         board[cell] = player
+
+        if check_win(board, player):
+            show_board(board)
+            print("Победил", player)
+            return
 
         if player == "X":
             player = "O"
