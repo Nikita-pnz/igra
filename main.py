@@ -27,13 +27,23 @@ def ask_cell(board):
         return number - 1
 
 
-def main():
+def play():
     board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    player = "X"
+
+    for _ in range(9):
+        show_board(board)
+        print("Ходит", player)
+
+        cell = ask_cell(board)
+        board[cell] = player
+
+        if player == "X":
+            player = "O"
+        else:
+            player = "X"
+
     show_board(board)
 
-    cell = ask_cell(board)
-    board[cell] = "X"
-    show_board(board)
 
-
-main()
+play()
