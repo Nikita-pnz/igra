@@ -66,4 +66,8 @@ def play():
     print("Ничья")
 
 
-play()
+while True:
+    play()
+    answer = input("Сыграть ещё раз? (да/нет): ")
+    if answer.lower() != "да":
+        break
