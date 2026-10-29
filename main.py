@@ -63,6 +63,7 @@ def play():
             player = "X"
 
     show_board(board)
+    print("Ничья")
 
 
 play()
